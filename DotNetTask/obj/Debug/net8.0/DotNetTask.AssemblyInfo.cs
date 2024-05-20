@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DotNetTask")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+af5cfa38fb14fbf38473537015bc51c86c3938b3")]
 [assembly: System.Reflection.AssemblyProductAttribute("DotNetTask")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DotNetTask")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

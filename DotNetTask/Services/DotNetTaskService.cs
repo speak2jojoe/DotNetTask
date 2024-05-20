@@ -14,7 +14,9 @@ namespace DotNetTask.Services
         private readonly string _containerName;
         private readonly Container _container;
 
-        public DotNetTaskService(IConfiguration configuration)
+        public IContainer Object { get; }
+
+        public DotNetTaskService(IConfiguration configuration, IContainer @object)
         {
             _configuration = configuration;
             var cosmosDBSettings = _configuration.GetSection("CosmosDBSettings");
@@ -26,6 +28,7 @@ namespace DotNetTask.Services
             var cosmosClient = new CosmosClient(endpointUri, primaryKey);
             var database = cosmosClient.GetDatabase(_databaseName);
             _container = database.GetContainer(_containerName);
+            Object = @object;
         }
 
         public async Task<bool> CreateQuestionTypeAsync(List<string> QuestionTypes)
@@ -38,7 +41,7 @@ namespace DotNetTask.Services
                 {
                     QuestionType.Add(new QuestionType
                     {
-                        Id = Guid.NewGuid(),
+                        Id = Guid.NewGuid().ToString(),
                         Type = type
                     });
                 }

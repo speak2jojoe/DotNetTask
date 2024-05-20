@@ -46,6 +46,7 @@ C:\Users\LENOVO\Documents\DotNetTask\DotNetTask\obj\Debug\net8.0\DotNetTask.Asse
 C:\Users\LENOVO\Documents\DotNetTask\DotNetTask\obj\Debug\net8.0\DotNetTask.csproj.CoreCompileInputs.cache
 C:\Users\LENOVO\Documents\DotNetTask\DotNetTask\obj\Debug\net8.0\DotNetTask.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\LENOVO\Documents\DotNetTask\DotNetTask\obj\Debug\net8.0\DotNetTask.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\LENOVO\Documents\DotNetTask\DotNetTask\obj\Debug\net8.0\DotNetTask.sourcelink.json
 C:\Users\LENOVO\Documents\DotNetTask\DotNetTask\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\LENOVO\Documents\DotNetTask\DotNetTask\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\LENOVO\Documents\DotNetTask\DotNetTask\obj\Debug\net8.0\staticwebassets\msbuild.DotNetTask.Microsoft.AspNetCore.StaticWebAssets.props

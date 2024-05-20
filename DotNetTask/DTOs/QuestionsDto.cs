@@ -2,8 +2,8 @@
 {
     public class QuestionsDto
     {
-        public int Guid { get; set; }
-        public int QuestionTypeId { get; set; }
+        public string Id { get; set; }
+        public string QuestionTypeId { get; set; }
         public string Question { get; set; }   
 
     }

@@ -2,8 +2,8 @@
 {
     public class Questions
     {
-        public Guid Id { get; set; }
-        public Guid QuestionTypeId { get; set; }
+        public string Id { get; set; }
+        public string QuestionTypeId { get; set; }
         public string Question { get; set; }   
 
     }
