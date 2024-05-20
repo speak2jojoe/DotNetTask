@@ -1,34 +1,12 @@
 using DotNetTask.Controllers;
 using DotNetTask.Interfaces;
 using DotNetTask.Services;
-using Microsoft.Azure.Cosmos;
-
-
-var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
-app.MapControllers();
-
-app.Run();
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 
 namespace DotNetTask
 {
@@ -41,17 +19,41 @@ namespace DotNetTask
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .ConfigureServices((hostContext, services) =>
+                .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    // Register services
-                    services.AddTransient<IDotNetTaskService, DotNetTaskService>();
+                    webBuilder.ConfigureServices((context, services) =>
+                    {
+                        services.AddControllers();
 
-                    // Register your entry point class if needed
-                    services.AddTransient<DotNetTaskController>();
+                        // Register services
+                        services.AddTransient<IDotNetTaskService, DotNetTaskService>();
+
+                        // Register Swagger services
+                        services.AddSwaggerGen(c =>
+                        {
+                            c.SwaggerDoc("v1", new OpenApiInfo { Title = "DotNetTask API", Version = "v1" });
+                        });
+                    })
+                    .Configure((context, app) =>
+                    {
+                        if (context.HostingEnvironment.IsDevelopment())
+                        {
+                            // Enable Swagger UI
+                            app.UseSwagger();
+                            app.UseSwaggerUI(c =>
+                            {
+                                c.SwaggerEndpoint("/swagger/v1/swagger.json", "DotNetTask API v1");
+                            });
+                        }
+
+                        app.UseHttpsRedirection();
+                        app.UseRouting();
+                        app.UseAuthorization();
+                        app.UseEndpoints(endpoints =>
+                        {
+                            endpoints.MapControllers();
+                        });
+                    });
                 });
     }
 }
-
-
-
-

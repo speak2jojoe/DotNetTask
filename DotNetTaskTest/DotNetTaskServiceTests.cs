@@ -19,7 +19,7 @@ namespace DotNetTaskTest
             var configuration = new ConfigurationBuilder().AddInMemoryCollection().Build();
             _configuration = configuration;
             _mockContainer = new Mock<IContainer>();
-            _dotNetTaskService = new DotNetTaskService(_configuration, _mockContainer.Object);
+            _dotNetTaskService = new DotNetTaskService(_configuration);
         }
 
         [Fact]
